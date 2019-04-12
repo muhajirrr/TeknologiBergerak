@@ -8,6 +8,10 @@ public class StandingsRow {
     private int silver;
     private int bronze;
 
+    public StandingsRow() {
+
+    }
+
     public StandingsRow(int rank, String flagLink, String country, int gold, int silver, int bronze) {
         this.rank = rank;
         this.flagLink = flagLink;
