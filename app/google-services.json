@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "109233867427",
+    "firebase_url": "https://tekber-c8b6a.firebaseio.com",
+    "project_id": "tekber-c8b6a",
+    "storage_bucket": "tekber-c8b6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109233867427:android:16a893f2ff4d23a9",
+        "android_client_info": {
+          "package_name": "com.muhajirlatif.tekber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109233867427-081l07g03j005dg9hq74pbonn26n69bq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.muhajirlatif.tekber",
+            "certificate_hash": "e473d30427b741c4a0f88fcd7b447ef70fa263e6"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-VoTm0xYaDsds8CjdWh39IeaYHW2A4p8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109233867427-r0hci3av6eu2e2jqu9s8m4d0h7cb8628.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
