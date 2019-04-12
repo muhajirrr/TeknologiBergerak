@@ -67,14 +67,16 @@ public class FirebaseActivity extends AppCompatActivity implements View.OnClickL
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                itemList = new ArrayList<>();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    StandingsRow row = snapshot.getValue(StandingsRow.class);
-                    itemList.add(row);
-                }
+                if (dataSnapshot != null) {
+                    itemList = new ArrayList<>();
+                    for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                        StandingsRow row = snapshot.getValue(StandingsRow.class);
+                        itemList.add(row);
+                    }
 
-                standingsAdapter.setItemList(itemList);
-                standingsAdapter.notifyDataSetChanged();
+                    standingsAdapter.setItemList(itemList);
+                    standingsAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
