@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.muhajirlatif.tekber.Model.Medal;
 import com.muhajirlatif.tekber.R;
-import com.muhajirlatif.tekber.Adapter.StandingsAdapter;
-import com.muhajirlatif.tekber.Model.StandingsRow;
+import com.muhajirlatif.tekber.Adapter.MedalAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,11 +17,11 @@ import java.util.Comparator;
 
 public class StandingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ArrayList<StandingsRow> itemList;
+    ArrayList<Medal> itemList;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private StandingsAdapter standingsAdapter;
+    private MedalAdapter standingsAdapter;
     private Button btnSort;
     private Integer statusSort;
 
@@ -38,7 +38,7 @@ public class StandingsActivity extends AppCompatActivity implements View.OnClick
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        standingsAdapter = new StandingsAdapter(getApplicationContext(), itemList);
+        standingsAdapter = new MedalAdapter(getApplicationContext(), itemList);
         recyclerView.setAdapter(standingsAdapter);
 
         btnSort = findViewById(R.id.btnSort);
@@ -47,11 +47,11 @@ public class StandingsActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void generateItemList() {
-        itemList.add(new StandingsRow(1, "https://cdn.countryflags.com/thumbs/china/flag-400.png", "China", 132, 92, 65));
-        itemList.add(new StandingsRow(2, "https://cdn.countryflags.com/thumbs/japan/flag-400.png", "Japan", 75, 56, 74));
-        itemList.add(new StandingsRow(3, "https://cdn.countryflags.com/thumbs/south-korea/flag-400.png", "South Korea", 49, 58, 43));
-        itemList.add(new StandingsRow(4, "https://cdn.countryflags.com/thumbs/indonesia/flag-400.png", "Indonesia", 31, 24, 25));
-        itemList.add(new StandingsRow(5, "https://cdn.countryflags.com/thumbs/uzbekistan/flag-400.png", "Uzbekistan", 21, 24, 22));
+        itemList.add(new Medal(1, "https://cdn.countryflags.com/thumbs/china/flag-400.png", "China", 132, 92, 65));
+        itemList.add(new Medal(2, "https://cdn.countryflags.com/thumbs/japan/flag-400.png", "Japan", 75, 56, 74));
+        itemList.add(new Medal(3, "https://cdn.countryflags.com/thumbs/south-korea/flag-400.png", "South Korea", 49, 58, 43));
+        itemList.add(new Medal(4, "https://cdn.countryflags.com/thumbs/indonesia/flag-400.png", "Indonesia", 31, 24, 25));
+        itemList.add(new Medal(5, "https://cdn.countryflags.com/thumbs/uzbekistan/flag-400.png", "Uzbekistan", 21, 24, 22));
     }
 
     @Override
@@ -59,9 +59,9 @@ public class StandingsActivity extends AppCompatActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.btnSort:
                 statusSort *= -1;
-                Collections.sort(itemList, new Comparator<StandingsRow>() {
+                Collections.sort(itemList, new Comparator<Medal>() {
                     @Override
-                    public int compare(StandingsRow o1, StandingsRow o2) {
+                    public int compare(Medal o1, Medal o2) {
                         return statusSort * Integer.compare(o1.getGold(), o2.getGold());
                     }
                 });

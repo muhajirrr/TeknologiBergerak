@@ -10,36 +10,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.muhajirlatif.tekber.Model.StandingsRow;
+import com.muhajirlatif.tekber.Model.Medal;
 import com.muhajirlatif.tekber.R;
 
 import java.util.ArrayList;
 
-public class StandingsAdapter extends RecyclerView.Adapter<StandingsAdapter.ViewHolder> {
+public class MedalAdapter extends RecyclerView.Adapter<MedalAdapter.ViewHolder> {
 
-    private ArrayList<StandingsRow> itemList;
+    private ArrayList<Medal> itemList;
     private Context context;
 
-    public StandingsAdapter(Context context, ArrayList<StandingsRow> itemList) {
+    public MedalAdapter(Context context, ArrayList<Medal> itemList) {
         this.context = context;
         this.itemList = itemList;
     }
 
     @NonNull
     @Override
-    public StandingsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MedalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_table_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
-    public void setItemList(ArrayList<StandingsRow> itemList) {
+    public void setItemList(ArrayList<Medal> itemList) {
         this.itemList = itemList;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StandingsAdapter.ViewHolder viewHolder, int i) {
-        StandingsRow item = itemList.get(i);
+    public void onBindViewHolder(@NonNull MedalAdapter.ViewHolder viewHolder, int i) {
+        Medal item = itemList.get(i);
 
         viewHolder.tvRank.setText(String.valueOf(item.getRank()));
         viewHolder.tvCountry.setText(item.getCountry());

@@ -8,16 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.muhajirlatif.tekber.Adapter.StandingsAdapter;
-import com.muhajirlatif.tekber.Model.StandingsRow;
+import com.muhajirlatif.tekber.Adapter.MedalAdapter;
+import com.muhajirlatif.tekber.Model.Medal;
 import com.muhajirlatif.tekber.R;
 
 import java.util.ArrayList;
@@ -26,11 +24,11 @@ import java.util.Comparator;
 
 public class FirebaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ArrayList<StandingsRow> itemList;
+    ArrayList<Medal> itemList;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private StandingsAdapter standingsAdapter;
+    private MedalAdapter standingsAdapter;
     private Button btnSort, btnAdd;
     private Integer statusSort;
 
@@ -48,7 +46,7 @@ public class FirebaseActivity extends AppCompatActivity implements View.OnClickL
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        standingsAdapter = new StandingsAdapter(getApplicationContext(), itemList);
+        standingsAdapter = new MedalAdapter(getApplicationContext(), itemList);
         recyclerView.setAdapter(standingsAdapter);
 
         btnSort = findViewById(R.id.btnSort);
@@ -61,7 +59,7 @@ public class FirebaseActivity extends AppCompatActivity implements View.OnClickL
         database = FirebaseDatabase.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 //        String uid = databaseReference.push().getKey();
-//        StandingsRow item = new StandingsRow(2, "https://cdn.countryflags.com/thumbs/japan/flag-400.png", "Japan", 75, 56, 74);
+//        Medal item = new Medal(2, "https://cdn.countryflags.com/thumbs/japan/flag-400.png", "Japan", 75, 56, 74);
 //        databaseReference.child(uid).setValue(item);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -70,7 +68,7 @@ public class FirebaseActivity extends AppCompatActivity implements View.OnClickL
                 if (dataSnapshot != null) {
                     itemList = new ArrayList<>();
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                        StandingsRow row = snapshot.getValue(StandingsRow.class);
+                        Medal row = snapshot.getValue(Medal.class);
                         itemList.add(row);
                     }
 
@@ -93,9 +91,9 @@ public class FirebaseActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.btnSort:
                 statusSort *= -1;
-                Collections.sort(itemList, new Comparator<StandingsRow>() {
+                Collections.sort(itemList, new Comparator<Medal>() {
                     @Override
-                    public int compare(StandingsRow o1, StandingsRow o2) {
+                    public int compare(Medal o1, Medal o2) {
                         return statusSort * Integer.compare(o1.getGold(), o2.getGold());
                     }
                 });

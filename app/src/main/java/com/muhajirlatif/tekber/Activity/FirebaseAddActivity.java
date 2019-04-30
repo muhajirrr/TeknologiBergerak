@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.muhajirlatif.tekber.Model.StandingsRow;
+import com.muhajirlatif.tekber.Model.Medal;
 import com.muhajirlatif.tekber.R;
 
 public class FirebaseAddActivity extends AppCompatActivity implements View.OnClickListener {
@@ -50,7 +50,7 @@ public class FirebaseAddActivity extends AppCompatActivity implements View.OnCli
                 String flag = etFlag.getText().toString();
 
                 String uid = databaseReference.push().getKey();
-                StandingsRow item = new StandingsRow(rank, flag, country, gold, silver, bronze);
+                Medal item = new Medal(rank, flag, country, gold, silver, bronze);
                 databaseReference.child(uid).setValue(item);
 
                 finish();

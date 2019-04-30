@@ -1,6 +1,6 @@
 package com.muhajirlatif.tekber.Model;
 
-public class StandingsRow {
+public class Medal {
     private int rank;
     private String flagLink;
     private String country;
@@ -8,11 +8,11 @@ public class StandingsRow {
     private int silver;
     private int bronze;
 
-    public StandingsRow() {
+    public Medal() {
 
     }
 
-    public StandingsRow(int rank, String flagLink, String country, int gold, int silver, int bronze) {
+    public Medal(int rank, String flagLink, String country, int gold, int silver, int bronze) {
         this.rank = rank;
         this.flagLink = flagLink;
         this.country = country;
